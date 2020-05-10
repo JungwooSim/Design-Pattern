@@ -6,6 +6,7 @@ import me.study.strategy.GoMove;
 import me.study.strategy.LeftMove;
 import me.study.strategy.RightMove;
 import me.study.template.Move;
+import me.study.template_callback.Calculator;
 
 public class Main {
 
@@ -29,7 +30,13 @@ public class Main {
 //        car3.move();
 
         // Template
-        me.study.template.Car car = new me.study.template.Move();
-        car.move();
+//        me.study.template.Car car = new me.study.template.Move();
+//        car.move();
+
+        // Template Callback
+        Calculator calculator = new Calculator();
+        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 + num2)));
+
+        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 * num2)));
     }
 }
