@@ -1,4 +1,4 @@
-package me.study;
+package me.study.singleton;
 
 public class Singleton {
     private Singleton(){}
