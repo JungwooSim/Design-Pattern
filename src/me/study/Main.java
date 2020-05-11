@@ -1,5 +1,9 @@
 package me.study;
 
+import me.study.decorator.Beverage;
+import me.study.decorator.Espresso;
+import me.study.decorator.HouseBlend;
+import me.study.decorator.Mocha;
 import me.study.proxy.protcetedProxy.Employee;
 import me.study.proxy.protcetedProxy.GRADE;
 import me.study.proxy.protcetedProxy.NormalEmployee;
@@ -52,6 +56,7 @@ public class Main {
 //        VirtualProxyInterface virtualProxyInterface1 = new VirtualProxy();
 //        virtualProxyInterface1.action();
 
+        /*
         // Protected Proxy
         Employee manager = new NormalEmployee("manager", GRADE.Manager);
         Employee staff = new NormalEmployee("staff", GRADE.Staff);
@@ -68,6 +73,19 @@ public class Main {
         System.out.println("----------------");
 
         printAllInformation(manager, protectedEmployees);
+         */
+
+        Beverage beverage = new Espresso();
+        System.out.println(beverage);
+
+        beverage = new Mocha(beverage);
+        System.out.println(beverage);
+
+        Beverage beverage2 = new HouseBlend();
+        System.out.println(beverage2);
+
+        beverage2 = new Mocha(beverage2);
+        System.out.println(beverage2);
 
     }
     public static void printAllInformation(Employee viewer, List<Employee> employees) {
