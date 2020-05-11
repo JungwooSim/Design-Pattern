@@ -1,16 +1,22 @@
 package me.study;
 
-import me.study.singleton.Singleton;
-import me.study.template.Car;
-import me.study.strategy.GoMove;
-import me.study.strategy.LeftMove;
-import me.study.strategy.RightMove;
-import me.study.template.Move;
-import me.study.template_callback.Calculator;
+import me.study.proxy.protcetedProxy.Employee;
+import me.study.proxy.protcetedProxy.GRADE;
+import me.study.proxy.protcetedProxy.NormalEmployee;
+import me.study.proxy.protcetedProxy.ProtectedEmployee;
+import me.study.proxy.virtual.VirtualProxy;
+import me.study.proxy.virtual.VirtualProxyImpl;
+import me.study.proxy.virtual.VirtualProxyInterface;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //Singleton
 //        Singleton singleton1 = Singleton.getInstance();
 //        Singleton singleton2 = Singleton.getInstance();
@@ -34,9 +40,40 @@ public class Main {
 //        car.move();
 
         // Template Callback
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 + num2)));
+//        Calculator calculator = new Calculator();
+//        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 + num2)));
+//
+//        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 * num2)));
 
-        System.out.println(calculator.calculatorTemplateMethod(1, 2, ((num1, num2) -> num1 * num2)));
+        // Virtual Proxy
+//        VirtualProxyInterface virtualProxyInterface2 = new VirtualProxyImpl();
+//        virtualProxyInterface2.action();
+//
+//        VirtualProxyInterface virtualProxyInterface1 = new VirtualProxy();
+//        virtualProxyInterface1.action();
+
+        // Protected Proxy
+        Employee manager = new NormalEmployee("manager", GRADE.Manager);
+        Employee staff = new NormalEmployee("staff", GRADE.Staff);
+        List<Employee> employees = Arrays.asList(manager, staff);
+
+        // protected 미적용
+        printAllInformation(staff, employees);
+        System.out.println("----------------");
+
+        List<Employee> protectedEmployees = employees.stream().map(ProtectedEmployee::new).collect(Collectors.toList());
+
+        // protected 적용
+        printAllInformation(staff, protectedEmployees);
+        System.out.println("----------------");
+
+        printAllInformation(manager, protectedEmployees);
+
+    }
+    public static void printAllInformation(Employee viewer, List<Employee> employees) {
+        employees.stream().map(
+                employee -> {
+                    return employee.getInformation(viewer);
+                }).forEach(System.out::println);
     }
 }

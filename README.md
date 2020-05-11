@@ -31,3 +31,13 @@ strategy 패턴과의 차이점은 strategy는 여러 개의 메소드를 가진
 **Why?**<br>
 보통 중복된 코드를 메소드로 분리할 수 있게 되는데, Template CallBack 패턴을 사용하게되면 메소드 조차도 줄일 수 있다. 
 - - - 
+### Proxy
+클라이언트로부터 요청을 받을 수 있는데, 이것을 대리(Proxy) 해주는 것을 Proxy 패턴이라고 한다.
+
+**Why?**<br>
+특별한 상황에서 target에 대한 접근권한을 제어할 수 있다.(Protected Proxy)<br>
+객체 사용 시점을 제어하여 Lazy Initialisation 가능하다.(Virtual Proxy)
+
+용어<br>
+targeet : proxy를 통해 받은 요청을 실제로 처리하는 실제 오브젝트
+- - -
