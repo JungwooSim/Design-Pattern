@@ -30,7 +30,7 @@ public class Main {
 //        }
 
         // Strategy
-//        me.study.strategy.Car car1 = new me.study.strategy.Car(new GoMove());
+//        Car car1 = new Car(new GoMove());
 //        car1.move();
 //
 //        Car car2 = new Car(new RightMove());
